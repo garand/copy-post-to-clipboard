@@ -7,5 +7,13 @@ function copyPostToClipboard() {
 
 	clipboard.copy({
 		"text/html": content
-	});
+	}).then(
+		function(){
+			cptcButton.innerHTML = "Copied!";
+		},
+		function(err){
+			cptcButton.innerHTML = "Error.";
+			console.log("failure", err);
+		}
+	);
 }
