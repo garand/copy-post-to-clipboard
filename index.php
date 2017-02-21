@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Copy Post to Clipboard
- * Version: 1.0
+ * Version: 1.1
  * Plugin URI: http://garand.me
  * Description: Copy post content to clipboard.
  * Author: Anthony Garand
