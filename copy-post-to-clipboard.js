@@ -1,18 +1,27 @@
-var cptcButton = document.getElementById('copyPostToClipboard__button')
+var cptcButtons = document.getElementsByClassName('copyPostToClipboard__button');
 
-cptcButton.addEventListener('click', copyPostToClipboard);
+console.log(cptcButtons);
 
-function copyPostToClipboard() {
+for (var i = 0; i < cptcButtons.length; i++) {
+	cptcButtons[i].addEventListener('click', copyPostToClipboard);
+}
+
+function copyPostToClipboard(event) {
 	var content = document.getElementById('copyPostToClipboard__contentArea').innerHTML;
+
+	console.log(event);
 
 	clipboard.copy({
 		"text/html": content
 	}).then(
 		function(){
-			cptcButton.innerHTML = "Copied!";
+			event.target.innerHTML = "Copied!";
+			window.setTimeout(function(){
+				event.target.innerHTML = "Copy to Clipboard";
+			}, 1000);
 		},
 		function(err){
-			cptcButton.innerHTML = "Error.";
+			event.target.innerHTML = "Error.";
 			console.log("failure", err);
 		}
 	);

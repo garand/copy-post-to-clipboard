@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Copy Post to Clipboard
- * Version: 1.2
+ * Version: 1.2.1
  * Plugin URI: http://garand.me
  * Description: Copy post content to clipboard.
  * Author: Anthony Garand
@@ -26,10 +26,10 @@ add_filter( 'the_content', 'cptc_content_filter', 20 );
 function cptc_content_filter( $content ) {
 
 	if ( is_single() ) {
-		wp_enqueue_script( 'clipboard-js', plugin_dir_url( __FILE__ ) . 'node_modules/clipboard-js/clipboard.min.js' );
-		wp_enqueue_script( 'copy-post-to-clipboard', plugin_dir_url( __FILE__ ) . 'copy-post-to-clipboard.js' );
+		wp_enqueue_script( 'clipboard-js', plugin_dir_url( __FILE__ ) . 'node_modules/clipboard-js/clipboard.min.js', false, false, false );
+		wp_enqueue_script( 'copy-post-to-clipboard', plugin_dir_url( __FILE__ ) . 'copy-post-to-clipboard.js', false, false, true );
 
-		$button = '<button id="copyPostToClipboard__button">Copy to Clipboard</button>';
+		$button = '<button class="copyPostToClipboard__button">Copy to Clipboard</button>';
 
 		$content = $button . '<br><br><div id="copyPostToClipboard__contentArea">' . $content . '</div>' .  $button;
 	}
