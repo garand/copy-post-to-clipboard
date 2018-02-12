@@ -11,9 +11,11 @@ function copyPostToClipboard(event) {
 
 	console.log(event);
 
-	clipboard.copy({
-		"text/html": content
-	}).then(
+	var dt = new clipboard.DT();
+	dt.setData("text/plain", content.replace(/<(?:.|\n)*?>/gm, ''));
+	dt.setData("text/html", content);
+
+	clipboard.write(dt).then(
 		function(){
 			event.target.innerHTML = "Copied!";
 			window.setTimeout(function(){
